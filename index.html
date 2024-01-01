@@ -6,19 +6,62 @@
     <style>
        body {
   background: 
-    linear-gradient(#0007, #0000),
-    #123;
-  margin: 0;
-  height: 100vh;
-  overflow: hidden;
-}
+    linear-gradient(#0007, #0000),#123;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
 
 @keyframes firework {
   0% { transform: translate(var(--x), var(--initialY)); width: var(--initialSize); opacity: 1; }
   50% { width: 0.5vmin; opacity: 1; }
   100% { width: var(--finalSize); opacity: 0; }
 }
+@media only screen and (max-width: 600px) {
+            .firework,
+            .firework::before,
+            .firework::after {
+                --y: -15vmin;
+            }
 
+            #container {
+                padding: 10px;
+            }
+
+            #greeting {
+                font-size: 20px;
+                top: 10%;
+            }
+
+            #x {
+                font-size: 16px;
+            }
+
+            #nameInput,
+            #enterButton {
+                font-size: 14px;
+            }
+
+            .firework,
+            .firework::before,
+            .firework::after {
+                --initialSize: 0.3vmin;
+                --finalSize: 20vmin;
+                --particleSize: 0.1vmin;
+            }
+
+            .firework:nth-child(2),
+            .firework:nth-child(2)::before,
+            .firework:nth-child(2)::after {
+                --finalSize: 25vmin;
+            }
+
+            .firework:nth-child(3),
+            .firework:nth-child(3)::before,
+            .firework:nth-child(3)::after {
+                --finalSize: 18vmin;
+            }
+        }
 /* @keyframes fireworkPseudo {
   0% { transform: translate(-50%, -50%); width: var(--initialSize); opacity: 1; }
   50% { width: 0.5vmin; opacity: 1; }
