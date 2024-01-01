@@ -222,7 +222,7 @@
             top: 15%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #c170e7;
+            color: #ffdd20;
             font-family:Copperplate, Papyrus, fantasy;
            
         }
@@ -298,19 +298,45 @@
 <div class="firework"></div>
      <div class="firework"></div><div class="firework"></div>
      <div class="firework"></div>
+     <div>
+      <audio id="backgroundMusic" loop>
+      <!-- Provide the path to your audio file -->
+      <source src="firecracks.mp3" type="audio/mp3">
+      Your browser does not support the audio tag.
+  </audio>
+</div>
 <script>
-    function showGreeting() {
-        var name = document.getElementById('nameInput').value;
-        //var greeting = document.getElementById('greeting');
-      //var fireworks = document.getElementsByClassName('fireworks');
+     var audio = document.getElementById("backgroundMusic");
 
-        if (name.trim() !== '') {
-            greeting.innerHTML = 'Wishing you a year filled with joy,laughter,and endless possibilities.Happy New Year,  ' + name + '  from Gopinath';
-           
-        } else {
-            alert('Please enter your name.');
-        }
+function showGreeting() {
+    var name = document.getElementById('nameInput').value;
+    var greeting = document.getElementById('greeting');
+
+    if (name.trim() !== '') {
+        greeting.innerHTML = 'Wishing you a year filled with joy, laughter, and endless possibilities. Happy New Year, ' + name + ' from Gopinath';
+        playBackgroundMusic(); // Call the function to play background music
+    } else {
+        alert('Please enter your name.');
     }
+}
+
+// Function to play the background music
+function playBackgroundMusic() {
+    audio.play();
+
+    // Stop playback after 10 seconds (10000 milliseconds)
+    setTimeout(function () {
+        audio.pause();
+        audio.currentTime = 0; // Reset audio to the beginning
+    }, 14000);
+}
+
+// Event listener for key press (Enter) on the input field
+document.getElementById("nameInput").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        playBackgroundMusic();
+    }
+});
 </script>
 
 </body>
